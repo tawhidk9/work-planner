@@ -3,7 +3,7 @@ var timeBlock = document.querySelector(".container")
 var currentDay = moment();
 
 //Display current date/time with moment formatting
-$("#toDay").text(currentDay.format("LLLL"));
+$("#today").text(currentDay.format("LLLL"));
 
 //User Interaction
 $("saveBtn").on("click", function(){
@@ -17,5 +17,5 @@ $("saveBtn").on("click", function(){
 
 function colorChange(){
     var currentHour = currentDay.hours();
-    
+
 }
