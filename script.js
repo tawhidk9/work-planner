@@ -15,27 +15,31 @@ $(".saveBtn").on('click', function(){
 
 //Color Change Depending on Hour 
 
-function colorChange(){
-    var currentHour = currentDay.hours();
+function colorChange() {
+  var currentDay = moment();
+  var currentHour = currentDay.format("H");
 
-    $('.time-block').each(function () {
-        var time = parseInt($(this).attr('id').split("time")[1]);
-    
-        // if the time Id attribute is before the current hour, add the past class
-        if (time < currentHour) {
-          $(this).addClass('past');
-        } // if the time Id attribute is equal to the current hour, remove the past and future classes and add the present class
-        else if (time === currentHour) {
-          $(this).addClass('present');
-          $(this).removeClass('past');
-        } // If the time Id attribute is greater than the current time, remove the past and present classes and add the future class
-        else {
-          $(this).addClass('future');
-          $(this).removeClass('past');
-          $(this).removeClass('present');
-        }
-      });
+  $('.time-block').each(function () {
+    var time = parseInt($(this).attr('id').split("time")[1]);
+
+    console.log("Current Hour: " + currentHour);
+    console.log("Time Block: " + time);
+
+    if (time < currentHour) {
+      console.log("Past");
+      $(this).addClass('past');
+      $(this).removeClass('present future');
+    } else if (time === currentHour) {
+      console.log("Present");
+      $(this).addClass('present');
+      $(this).removeClass('past future');
+    } else {
+      console.log("Future");
+      $(this).addClass('future');
+      $(this).removeClass('past present');
     }
+  });
+}
     
     colorChange();
     
