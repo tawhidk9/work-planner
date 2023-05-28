@@ -14,25 +14,27 @@ $(".saveBtn").on('click', function(){
 
 
 //Color Change Depending on Hour 
-
 function colorChange() {
   var currentDay = moment();
-  var currentHour = currentDay.format("H");
+  var currentHour = currentDay.format("H"); //moment format into hour
 
   $('.time-block').each(function () {
     var time = parseInt($(this).attr('id').split("time")[1]);
 
     console.log("Current Hour: " + currentHour);
     console.log("Time Block: " + time);
-
+    
+    //time less than current hour, adds past class and sets color to gray
     if (time < currentHour) {
       console.log("Past");
       $(this).addClass('past');
       $(this).removeClass('present future');
+    //time equal to current hour, adds present class and sets color red
     } else if (time == currentHour) {
       console.log("Present");
       $(this).addClass('present');
       $(this).removeClass('past future');
+    //time greater than currrent hour, adds future class and sets color green
     } else {
       console.log("Future");
       $(this).addClass('future');
@@ -67,8 +69,8 @@ $(document).ready(function() {
 //Call Functions
 colorChange();
     
-    setInterval(function () {
-      colorChange();
+setInterval(function () {
+    colorChange();
     }, 1000 * 60);
 
 
