@@ -29,7 +29,7 @@ function colorChange() {
       console.log("Past");
       $(this).addClass('past');
       $(this).removeClass('present future');
-    } else if (time === currentHour) {
+    } else if (time == currentHour) {
       console.log("Present");
       $(this).addClass('present');
       $(this).removeClass('past future');
