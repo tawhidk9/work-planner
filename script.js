@@ -41,7 +41,31 @@ function colorChange() {
   });
 }
     
-    colorChange();
+// User Interaction
+$(".saveBtn").on('click', function(){
+  var textInput = $(this).siblings(".text").val(); // Get the value of the textarea
+  var timeBlockId = $(this).parent().attr("id"); // Get the ID of the parent time block
+
+  // Save the user's input in localStorage using the time block ID as the key
+  localStorage.setItem(timeBlockId, textInput);
+});
+
+// Restore saved user input on page load
+$(document).ready(function() {
+  $('.time-block').each(function() {
+      var timeBlockId = $(this).attr('id');
+      var savedInput = localStorage.getItem(timeBlockId);
+
+      if (savedInput) {
+          $(this).find('.text').val(savedInput);
+      }
+  });
+});    
+
+
+
+//Call Functions
+colorChange();
     
     setInterval(function () {
       colorChange();
